@@ -1,3 +1,5 @@
+[![Comprobar PHP](https://github.com/franciscojoseortunotorrano-lang/PokeVault/actions/workflows/ci.yml/badge.svg)](https://github.com/franciscojoseortunotorrano-lang/PokeVault/actions/workflows/ci.yml)
+
 # PokeVault ⚡
 
 **Autor:** Francisco José Ortuño Torrano  
