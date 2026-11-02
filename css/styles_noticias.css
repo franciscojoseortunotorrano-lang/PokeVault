@@ -468,3 +468,27 @@ footer {
         transform: translateY(0);
     }
 }
+
+.enlaceNoticia {
+
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    background: linear-gradient(180deg, #2a3a5c 0%, #152238 100%);
+    border: 2px solid #3b4c9d;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.enlaceNoticia:hover {
+    color: #ffcb05;
+    border-color: #ffcb05;
+    background: linear-gradient(180deg, #3b4c9d 0%, #1e2b47 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
+}
