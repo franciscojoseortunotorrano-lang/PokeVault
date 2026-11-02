@@ -1,0 +1,388 @@
+/* ===================================================
+   POKÉMON TCG - STYLESHEET ADMINISTRADOR / DASHBOARD
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+    background: radial-gradient(circle at 50% 20%, #1a233a 0%, #0d121d 60%, #05080e 100%);
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 25px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Patrón de fondo estilo Pokédex */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 203, 5, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(59, 76, 156, 0.15) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 2px, transparent 2px, transparent 10px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* TOP BAR: HEADER & LOGO (Parte izquierda de la barra superior) */
+header {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #182232 0%, #0f1623 100%);
+    border: 3px solid #ffcb05;
+    border-right: 2px solid #ffcb05;
+    border-radius: 16px 0 0 16px;
+    padding: 10px 20px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(255, 203, 5, 0.3);
+}
+
+.logo-header-container {
+    display: inline-block;
+    filter: drop-shadow(0 0 15px rgba(255, 203, 5, 0.6));
+    transition: transform 0.3s ease;
+}
+
+.logo-header-container:hover {
+    transform: scale(1.04);
+}
+
+.logo-header {
+    max-height: 42px;
+    width: auto;
+    display: block;
+}
+
+/* TOP BAR: NAV & PERFIL DE USUARIO (Parte derecha de la barra superior) */
+nav {
+    grid-column: 2;
+    grid-row: 1;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(135deg, #182232 0%, #0f1623 100%);
+    border: 3px solid #ffcb05;
+    border-left: none;
+    border-radius: 0 16px 16px 0;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(255, 203, 5, 0.3);
+    gap: 15px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    background: linear-gradient(180deg, #2a3a5c 0%, #152238 100%);
+    border: 2px solid #3b4c9d;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.nav-links a:hover {
+    color: #ffcb05;
+    border-color: #ffcb05;
+    background: linear-gradient(180deg, #3b4c9d 0%, #1e2b47 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
+}
+
+/* Sección Perfil Usuario */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid #ffcb05;
+    object-fit: cover;
+    background-color: #1a233a;
+    box-shadow: 0 0 10px rgba(255, 203, 5, 0.4);
+}
+
+/* Fallback si la imagen de usuario no existe */
+.user-avatar[src=""], .user-avatar:not([src]) {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="%232a3a5c"/><circle cx="20" cy="15" r="8" fill="%23ffcb05"/><path d="M6 35 C6 24 34 24 34 35 Z" fill="%23ffcb05"/></svg>');
+}
+
+/* Separador vertical entre Foto y Nombre de usuario */
+.user-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffcb05;
+    letter-spacing: 1px;
+    border-left: 2px solid #3b4c9d;
+    padding-left: 14px;
+    text-decoration: none;
+}
+
+/* SECCIÓN CONTENEDOR DE CARTAS */
+section {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(135deg, #182232 0%, #0f1623 100%);
+    border: 3px solid #ffcb05;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(255, 203, 5, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Contenedor principal flex con wrapping para la navbar superior y las cartas */
+.contenedorCartas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 15px;
+    padding: 0 15px 25px 15px;
+    width: 100%;
+}
+
+/* Navbar del contenedor de cartas */
+.contenedorCartas > div:first-child {
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 12px 24px;
+    background: rgba(10, 15, 25, 0.6);
+    border-bottom: 2px solid #ffcb05;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Enlaces de acciones dentro de la navbar del contenedor de cartas */
+.contenedorCartas > div:first-child a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    background: linear-gradient(180deg, #2a3a5c 0%, #152238 100%);
+    border: 2px solid #3b4c9d;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.contenedorCartas > div:first-child a:hover {
+    color: #ffcb05;
+    border-color: #ffcb05;
+    background: linear-gradient(180deg, #3b4c9d 0%, #1e2b47 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
+}
+
+/* Botones reales ('←' y '→') */
+.contenedorCartas > button {
+    background: transparent;
+    border: none;
+    color: #ffcb05;
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+    padding: 0 8px;
+    line-height: 1;
+    user-select: none;
+}
+
+.contenedorCartas > button:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* MARCO CARTA POKÉMON TCG */
+.carta {
+    flex: 1;
+    max-width: 220px;
+    background: linear-gradient(135deg, #ffcb05 0%, #ffb100 50%, #e69d00 100%);
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.6),
+        0 0 15px rgba(255, 203, 5, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.carta:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 20px 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 203, 5, 0.6);
+}
+
+.carta-frame {
+    width: 100%;
+    height: 270px;
+    border-radius: 12px;
+    border: 3px solid #3b4c9d;
+    background: #0f1623;
+    overflow: hidden;
+}
+
+.carta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fallback si la imagen de la carta está vacía */
+.carta-img[src=""], .carta-img:not([src]) {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="270" viewBox="0 0 200 270"><rect width="200" height="270" fill="%23182232"/><circle cx="100" cy="135" r="45" fill="none" stroke="%23ffcb05" stroke-width="6"/><line x1="55" y1="135" x2="145" y2="135" stroke="%23ffcb05" stroke-width="6"/><circle cx="100" cy="135" r="15" fill="%23ffcb05"/><text x="100" y="220" fill="%23ffcb05" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">CARTA POKÉMON</text></svg>');
+}
+
+/* FOOTER REPARADO */
+footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    z-index: 2;
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #182232 0%, #0f1623 100%);
+    border: 3px solid #ffcb05;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    position: relative;
+    gap: 15px;
+}
+
+.logo-footer {
+    max-height: 40px;
+    width: auto;
+    filter: drop-shadow(0 0 8px rgba(255, 203, 5, 0.5));
+}
+
+.copyright {
+    font-size: 0.95rem;
+    color: #a0b0cb;
+    font-weight: 600;
+    flex: 1;
+    text-align: center;
+}
+
+.ancla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(180deg, #e3350d 0%, #b82200 100%);
+    color: #ffcb05;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #ffcb05;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.25s ease;
+}
+
+.ancla:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(227, 53, 13, 0.6);
+}
+
+/* ADAPTACIÓN RESPONSIVA */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    header {
+        grid-column: 1;
+        grid-row: 1;
+        border-radius: 16px 16px 0 0;
+        border-right: 3px solid #ffcb05;
+        border-bottom: none;
+    }
+
+    nav {
+        grid-column: 1;
+        grid-row: 2;
+        border-radius: 0 0 16px 16px;
+        border-left: 3px solid #ffcb05;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        grid-row: 3;
+    }
+
+    .contenedorCartas {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer {
+        grid-row: 4;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .copyright {
+        margin: 10px 0;
+    }
+}
