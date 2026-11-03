@@ -19,20 +19,21 @@
                 <!--Formulario de acceso a la página web-->
                 <form action="">
                     <!--Campo para insertar el nombre de usuario-->
-                    <label for="">Nombre de Usuario</label>
+                    <label for="">Usuario</label>
                     <input type="text">
-                    <br>
-                    <label for="">Apellidos</label>
-                    <input type="text">
+
                     <br>
                     <!--Campo para insertar la constraseña-->
                     <label for="">Contraseña</label>
                     <input type="password" placeholder="contraseña">
+
                     <br>
                     <!--boton tipo 'submit' que envia el formulario-->
                     <input type="submit" value="Iniciar sesión">
 
                 </form>
+
+                <div><a href="./Registro.php" class="enlace">Registrate</a></div>
             </div>
         </div>
     </section>
