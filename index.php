@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+$_SESSION['error'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,19 +25,25 @@
         <div class="contenedor">
             <div class="caja">
                 <!--Formulario de acceso a la página web-->
-                <form action="">
+                <div ><p class="error"><?php 
+                    if(!empty($_SESSION['error'])){
+                        echo $_SESSION['error'];
+                    }                           
+                
+                ?></p></div>
+                <form action="accesoBD.php" method="post">
                     <!--Campo para insertar el nombre de usuario-->
                     <label for="">Usuario</label>
-                    <input type="text">
+                    <input type="text" name="user" required>
 
                     <br>
                     <!--Campo para insertar la constraseña-->
                     <label for="">Contraseña</label>
-                    <input type="password" placeholder="contraseña">
+                    <input type="password" placeholder="contraseña" name="pass" required>
 
                     <br>
                     <!--boton tipo 'submit' que envia el formulario-->
-                    <input type="submit" value="Iniciar sesión">
+                    <input type="submit" value="Iniciar sesión" name="" >
 
                 </form>
 
