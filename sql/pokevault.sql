@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2026 a las 11:34:52
+-- Tiempo de generación: 03-11-2026 a las 13:00:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,18 +31,19 @@ CREATE TABLE `cartas` (
   `id` int(11) NOT NULL,
   `dueño` int(11) NOT NULL,
   `imagen` varchar(255) NOT NULL,
-  `estado` int(11) NOT NULL
+  `estado` int(11) NOT NULL,
+  `favorita` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cartas`
 --
 
-INSERT INTO `cartas` (`id`, `dueño`, `imagen`, `estado`) VALUES
-(1, 2, '1.png', 9),
-(2, 2, '2.png', 7),
-(3, 2, '3.png', 7),
-(4, 1, '4.png', 10);
+INSERT INTO `cartas` (`id`, `dueño`, `imagen`, `estado`, `favorita`) VALUES
+(1, 2, '1.png', 9, 0),
+(2, 2, '2.png', 7, 0),
+(3, 2, '3.png', 7, 0),
+(4, 1, '4.png', 10, 0);
 
 -- --------------------------------------------------------
 
