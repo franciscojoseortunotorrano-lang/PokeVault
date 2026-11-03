@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2026 a las 13:00:27
+-- Tiempo de generación: 03-11-2026 a las 13:27:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -74,7 +74,7 @@ INSERT INTO `noticias` (`id`, `autor`, `cuerpo`, `publicado`) VALUES
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `apellidos` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
   `rol` int(11) NOT NULL,
   `bloqueado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -83,9 +83,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `rol`, `bloqueado`) VALUES
-(1, 'Admin', 'Admin', 0, 0),
-(2, 'User', 'User', 1, 0);
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `rol`, `bloqueado`) VALUES
+(1, 'Admin', 'Admin@gmail.com', 0, 0),
+(2, 'User1', 'User1@gmail.com', 1, 0),
+(3, 'User2', 'User2@gmail.com', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -131,7 +132,7 @@ ALTER TABLE `noticias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
