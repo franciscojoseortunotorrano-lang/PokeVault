@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+$_SESSION['error']="";
+$_SESSION['nombreU']="";
 
 ?>
 <!DOCTYPE html>

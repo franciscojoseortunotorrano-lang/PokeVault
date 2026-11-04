@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+$_SESSION['passDif'] = "";
+$_SESSION['user'] = "";
+$_SESSION['email'] = "";
+$_SESSION['exist'] = "";
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +35,7 @@ session_start();
                 <form action="accesoBD.php" method="post">
                     <!--Campo para insertar el nombre de usuario-->
                     <label for="">Usuario</label>
-                    <input type="text" name="user" required>
+                    <input type="text" name="user" required value="<?php if(!empty($_SESSION['nombreU'])){echo $_SESSION['nombreU'];}  ?>">
 
                     <br>
                     <!--Campo para insertar la constraseña-->

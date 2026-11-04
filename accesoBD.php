@@ -2,6 +2,9 @@
     session_start();
     include('conexion.php');
 
+    $_SESSION['error']="";
+    $_SESSION['nombreU']="";
+
     $user=$_POST['user'];
     $pass=$_POST['pass'];
 
@@ -13,6 +16,7 @@
 
     if (mysqli_num_rows($result)==0){
         $_SESSION['error']="Error: datos incorrectos";
+        $_SESSION['nombreU']=$user;
         header("LOCATION:./index.php");
     }
     elseif (mysqli_num_rows($result)==1) {
