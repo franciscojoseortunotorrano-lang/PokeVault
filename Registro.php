@@ -2,11 +2,6 @@
 
 session_start();
 
-$_SESSION['user'];
-$_SESSION['email'];
-$_SESSION['passDif'];
-$_SESSION['exist'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,11 +42,11 @@ $_SESSION['exist'];
                     <br>
                     <!--Campo para insertar la constraseña-->
                     <label for="">Contraseña</label>
-                    <input type="password" placeholder="contraseña" name="pass" maxlength="20" required>
+                    <input type="password" placeholder="contraseña" name="pass" maxlength="20" minlength="8" required>
                     <br>
                     <!--Campo para confirmar la contraseña-->
                     <label for="">Confirma la contraseña</label>
-                    <input type="password" placeholder="confirmacion contraseña" name="confirmPass" maxlength="20" required>
+                    <input type="password" placeholder="confirmacion contraseña" name="confirmPass" maxlength="20" minlength="8" required>
                     <br>
                     <!--boton tipo 'submit' que envia el formulario-->
                     <input type="submit" value="Registrar">

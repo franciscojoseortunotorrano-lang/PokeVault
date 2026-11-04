@@ -12,7 +12,7 @@
     echo mysqli_error($conn);
 
     if (mysqli_num_rows($result)==0){
-        $_SESSION['error']="usuario no registrado";
+        $_SESSION['error']="Error: datos incorrectos";
         header("LOCATION:./index.php");
     }
     elseif (mysqli_num_rows($result)==1) {
