@@ -197,6 +197,22 @@ nav {
     text-decoration: none;
 }
 
+.user-select {
+    background: transparent;
+    border: none;
+    color: #ffd700; /* Amarillo del nombre */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Fondo oscuro de las opciones */
+.user-select option {
+    background-color: #0b132b;
+    color: #ffffff;
+}
+
 /* ===================================================
    SECCIÓN PRINCIPAL: FICHA DE USUARIO AJENO
    =================================================== */

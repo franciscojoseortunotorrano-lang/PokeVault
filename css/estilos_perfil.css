@@ -160,6 +160,22 @@ nav {
     box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
 }
 
+.user-select {
+    background: transparent;
+    border: none;
+    color: #ffd700; /* Amarillo del nombre */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Fondo oscuro de las opciones */
+.user-select option {
+    background-color: #0b132b;
+    color: #ffffff;
+}
+
 /* Sección Perfil Usuario */
 .user-profile {
     display: flex;

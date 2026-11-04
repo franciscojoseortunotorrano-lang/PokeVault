@@ -16,20 +16,7 @@
         </div>
     </header>
 
-    <nav>
-        <!--Barra de navegacion-->
-        <div class="nav-links">
-            <a href="./ListadoCartas.html">Cartas</a>
-            <a href="./Perfil.html">Perfil</a>
-            <a href="./Noticias.html">Noticias</a>
-            <a href="./GestionUsuarios.html">Usuarios</a>
-        </div>
-        <!--Apartado de usuario-->
-        <div class="user-profile">
-            <img src="../imagenes/foto.png" alt="Foto usuario" class="user-avatar">
-            <a class="user-name" href="#">Nombre Usuario</a>
-        </div>
-    </nav>
+    <?php include("AdminNavbar.php"); ?>
     <!--Cuerpo de la página-->
     <section>
         <div class="contenedorCartas">
