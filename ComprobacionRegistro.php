@@ -29,12 +29,14 @@ if (mysqli_num_rows($result)==0){
         echo mysqli_error($conn);
         header("LOCATION:./index.php");
     }else{
+        $_SESSION['recarga']="false";
         $_SESSION['user']=$user;
         $_SESSION['email']=$email;
         $_SESSION['passDif']=true;
         header("LOCATION:./Registro.php");
     }
 }else{
+    $_SESSION['recarga']="false";
     $_SESSION['user']=$user;
     $_SESSION['email']=$email;
     $_SESSION['exist']=true;

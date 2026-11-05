@@ -5,6 +5,10 @@ $_SESSION['passDif'] = "";
 $_SESSION['user'] = "";
 $_SESSION['email'] = "";
 $_SESSION['exist'] = "";
+if(empty($_SESSION['recarga'])){
+    $_SESSION['error']="";
+}
+$_SESSION['recarga']="";
 ?>
 
 <!DOCTYPE html>

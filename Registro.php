@@ -3,7 +3,11 @@
 session_start();
 $_SESSION['error']="";
 $_SESSION['nombreU']="";
-
+if(empty($_SESSION['recarga'])){
+    $_SESSION['exist']="";
+    $_SESSION['passDif']="";
+}
+$_SESSION['recarga']="";
 ?>
 <!DOCTYPE html>
 <html lang="en">

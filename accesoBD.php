@@ -16,6 +16,7 @@
 
     if (mysqli_num_rows($result)==0){
         $_SESSION['error']="Error: datos incorrectos";
+        $_SESSION['recarga']="false";
         $_SESSION['nombreU']=$user;
         header("LOCATION:./index.php");
     }
@@ -37,6 +38,7 @@
             }
             else{
                 $_SESSION['error']="ERROR: Rol inexistente";
+                $_SESSION['recarga']="false";
                 header("LOCATION:./index.php");
             }
         }else{
@@ -44,6 +46,7 @@
         }
     }else{
         $_SESSION['error']="ERROR: error de integridad en bbdd";
+        $_SESSION['recarga']="false";
         header("LOCATION:./index.php");
     }
 ?>
