@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Cartas</title>
+    <link rel="stylesheet" href="../css/formularios.css">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="./imagenes/logo.png" alt="">
+        </div>
+    </header>
+    <section>
+        <!--Contenedor principal donde estara el formulario de acceso-->
+        <div class="contenedor">
+            <div class="caja">
+                <!--Formulario de acceso a la página web-->
+                <div ><p class="error"></p></div>
+                <form action="accesoBD.php" method="post">
+                    <!--Campo para insertar el nombre de usuario-->
+                    <label for="">Imagen</label>
+                    <input type="file" name="carta" required >
+
+                    <br>
+                    <!--Campo para insertar la constraseña-->
+                    <label for="">Estado</label>
+                    <input type="number" placeholder="(1-10)" name="state" max="10" min="1" required >
+
+                    <br>
+                    <!--boton tipo 'submit' que envia el formulario-->
+                    <input type="submit" value="Registrar carta" name="" >
+
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
