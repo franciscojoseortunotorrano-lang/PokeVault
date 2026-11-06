@@ -1,4 +1,6 @@
-<?php include('sesion.php') ?>
+<?php 
+    include('sesion.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,40 +22,42 @@
 
     <!-- Sección principal: Rejilla de cartas -->
     <section>
-        <div class="contenedorCartas">
-            <!-- Carta 1 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/1.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
-
-            <!-- Carta 2 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/2.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
-
-            <!-- Carta 3 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/3.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
+        <div class="nav-menu-content">
+            <a href="./FormularioCartas.php" class="navbar-Cartas">Añadir Carta</a>
         </div>
+        <div class="contenedorCartas">
+            <?php
+                include("../conexion.php");
+                //Lógica del fichero
+                $consulta="Select * from cartas WHERE dueño='".$_SESSION['idU']."'";
+
+                $result=mysqli_query($conn,$consulta);
+
+                while ($row=mysqli_fetch_array($result)){
+                    $ruta=$row['imagen'];
+                    $estado=$row['estado'];
+                    echo '<div class="carta">
+                            <p class="state">'.$estado.'</p>
+                                <div class="carta-frame">
+                                    <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
+                                </div>
+                            <div class="carta-acciones">
+                            <a href="FormModificarcartas.php?id='.$row['id'].'" class="btn-modificar">Modificar</a>
+                            <a href="BorrarCarta.php?id='.$row['id'].'" class="btn-eliminar">Eliminar</a>
+                            </div>
+                        </div>';
+                    
+                }
+            ?>
+        </div>
+        <?php
+            if(mysqli_num_rows($result)==0){
+                    echo "<p class='mensaje'>No tienes ninguna carta ¡Anímate a crear la primera ahora!</p>";
+                }
+
+                //Cerramos la conexión
+                mysqli_close($conn);
+        ?>
     </section>
 
     <!-- Footer -->
