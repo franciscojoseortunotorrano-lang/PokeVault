@@ -18,7 +18,7 @@
             <div class="caja">
                 <!--Formulario de acceso a la página web-->
                 <div ><p class="error"></p></div>
-                <form action="accesoBD.php" method="post">
+                <form action="NewCart.php" method="POST" enctype="multipart/form-data">
                     <!--Campo para insertar el nombre de usuario-->
                     <label for="">Imagen</label>
                     <input type="file" name="carta" required >
