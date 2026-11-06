@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include ("../conexion.php");
 
 
@@ -18,16 +19,18 @@
         mysqli_query($conn,$consulta);
     
     
-        echo mysqli_error($conn );
+        
 
-        $consulta="SELECT imagen FROM cartas WHERE id='".$id."'";
-        $result=mysqli_query($conn,$consulta);
-        //copiamos la imagen que nos ha llegado a su carpeta.
-        echo mysqli_error($conn );
-        $ima="../imagenes/".((int) $id).".jpg";
-        $ruta=$ima;
+        if(!empty($_FILES["carta"]["tmp_name"])){
+            $consulta="SELECT imagen FROM cartas WHERE id='".$id."'";
+            $result=mysqli_query($conn,$consulta);
+            //copiamos la imagen que nos ha llegado a su carpeta.
+            
+            $ima="../imagenes/".((int) $id).".jpg";
+            $ruta=$ima;
 
-        COPY($_FILES["carta"]["tmp_name"],$ruta);
+            COPY($_FILES["carta"]["tmp_name"],$ruta);
+        }
 
         header ("LOCATION:listadoCartas.php");
     }

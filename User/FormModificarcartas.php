@@ -14,7 +14,14 @@
     </header>
     <section>
         <?php
-            $id=$_GET['id']
+            $id=$_GET['id'];
+
+             include ("../conexion.php");
+             $consulta = "Select * FROM cartas WHERE id='".$id."'";
+
+            $result=mysqli_query($conn,$consulta);
+            $state=mysqli_fetch_array($result);
+
         ?>
         <!--Contenedor principal donde estara el formulario de acceso-->
         <div class="contenedor">
@@ -22,11 +29,12 @@
                 <!--Formulario de acceso a la página web-->
                 <div ><p class="error"></p></div>
                 <form action="ModCart.php" method="POST" enctype="multipart/form-data">
-                    <label for="">Imagen</label>
-                    <input type="file" name="carta" required >
+                    <label for="">Nueva Imagen</label>
+                    <input type="file" name="carta">
+                    <small class="secundario">No es obligatorio cambiar la imagen.</small>
                     <!--Campo para insertar el estado-->
                     <label for="">Estado</label>
-                    <input type="number" placeholder="(1-10)" name="state" max="10" min="1" required >
+                    <input type="number" placeholder="(1-10)" name="state" max="10" min="1" required value="<?php echo $state['estado'] ?>">
                     <input type="hidden" name="id" value="<?php echo $id ?>">
                     <br>
                     <!--boton tipo 'submit' que envia el formulario-->

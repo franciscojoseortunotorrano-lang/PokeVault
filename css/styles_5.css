@@ -328,6 +328,7 @@ section {
 
 /* MARCO CARTA POKÉMON TCG */
 .carta {
+    position: relative;
     flex: 1;
     max-width: 220px;
     background: linear-gradient(135deg, #ffcb05 0%, #ffb100 50%, #e69d00 100%);
@@ -466,4 +467,22 @@ footer {
     .copyright {
         margin: 10px 0;
     }
+}
+
+.state{
+    position: absolute;
+    top: 3px;           /* Distancia desde el borde superior de la carta */
+    left: 3px;          /* Distancia desde el borde izquierdo de la carta */
+    z-index: 10;
+    -webkit-text-stroke: 0.5px black; /* Grosor y color del borde */
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    background-color: #ffcb05;
+    border-radius: 24px;
+    border: 3px solid #3b4c9d;
+    text-align: right;
 }
