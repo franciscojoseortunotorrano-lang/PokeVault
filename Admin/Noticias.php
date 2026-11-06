@@ -23,39 +23,41 @@
             <!-- Navbar del contenedor de noticias (Filtrar) -->
             <div>
                 <a href="#">Filtrar</a>
-                <a href="#">Añadir Noticia</a>
+                <a href="./FormularioNoticias.php">Añadir Noticia</a>
             </div>
+            <?php
+                include("../conexion.php");
+                //Lógica del fichero
+                $consulta="Select * from noticias";
 
-            <!-- Ejemplo de Noticia 1 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Evento de Intercambio de Cartas</h3>
-                    <p class="cuerpo-Noticia">Próximamente se celebrará un gran evento de intercambio entre coleccionistas. ¡No olvides traer tu mazo preparado!</p>
-                </div>
-                <br>
-                <a class="enlaceNoticia" href="">Editar Noticia</a>
-            </div>
+                $result=mysqli_query($conn,$consulta);
 
-            <!-- Ejemplo de Noticia 2 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Nueva Expansión Disponible</h3>
-                    <p class="cuerpo-Noticia">Ya puedes gestionar y agregar las cartas pertenecientes a la nueva colección oficial a tu registro personal.</p>
-                </div>
-                <br>
-                <a class="enlaceNoticia" href="">Editar Noticia</a>
-            </div>
-
-            <!-- Ejemplo de Noticia 3 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Mantenimiento Programado</h3>
-                    <p class="cuerpo-Noticia">El servidor estará en mantenimiento durante la noche para actualizar las listas y rankings globales.</p>
-                </div>
-                <br>
-                <a class="enlaceNoticia" href="">Editar Noticia</a>
-            </div>
+                while ($row=mysqli_fetch_array($result)){
+                    $titulo=$row['titulo'];
+                    $cuerpo=$row['cuerpo'];
+                    $id=$row["id"];
+                    echo    
+                            "<div class='noticia'>
+                                <div class='noticias-frame'>
+                                    <h3>$titulo</h3>
+                                    <p class='cuerpo-Noticia'>$cuerpo</p>
+                                </div>
+                                <br>
+                                <a class='enlaceNoticia' href='FormModificarNoticias.php?id=$id'>Editar Noticia</a>
+                            </div>";
+                    
+                }
+            ?>
         </div>
+
+        <?php
+            if(mysqli_num_rows($result)==0){
+                    echo "<p class='mensaje'>No hay ninguna noticia.</p>";
+                }
+
+                //Cerramos la conexión
+                mysqli_close($conn);
+        ?>
     </section>
 
     <!-- Footer -->

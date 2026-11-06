@@ -508,3 +508,16 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
 }
+
+.mensaje{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    display: block;
+    text-align: left;
+
+
+}

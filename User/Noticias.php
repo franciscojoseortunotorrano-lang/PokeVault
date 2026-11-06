@@ -25,28 +25,27 @@
             </div>
 
             <!-- Ejemplo de Noticia 1 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Evento de Intercambio de Cartas</h3>
-                    <p class="cuerpo-Noticia">Próximamente se celebrará un gran evento de intercambio entre coleccionistas. ¡No olvides traer tu mazo preparado!</p>
-                </div>
-            </div>
+            <?php
+                include("../conexion.php");
+                //Lógica del fichero
+                $consulta="Select * from noticias";
 
-            <!-- Ejemplo de Noticia 2 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Nueva Expansión Disponible</h3>
-                    <p class="cuerpo-Noticia">Ya puedes gestionar y agregar las cartas pertenecientes a la nueva colección oficial a tu registro personal.</p>
-                </div>
-            </div>
+                $result=mysqli_query($conn,$consulta);
 
-            <!-- Ejemplo de Noticia 3 -->
-            <div class="noticia">
-                <div class="noticias-frame">
-                    <h3>Mantenimiento Programado</h3>
-                    <p class="cuerpo-Noticia">El servidor estará en mantenimiento durante la noche para actualizar las listas y rankings globales.</p>
-                </div>
-            </div>
+                while ($row=mysqli_fetch_array($result)){
+                    $titulo=$row['titulo'];
+                    $cuerpo=$row['cuerpo'];
+                    $id=$row["id"];
+                    echo    
+                            "<div class='noticia'>
+                                <div class='noticias-frame'>
+                                    <h3>$titulo</h3>
+                                    <p class='cuerpo-Noticia'>$cuerpo</p>
+                                </div>
+                            </div>";
+                    
+                }
+            ?>
         </div>
     </section>
 

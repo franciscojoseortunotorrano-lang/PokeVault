@@ -1,7 +1,4 @@
 <?php
-
-use BcMath\Number;
-
     session_start();
     //Estableciendo la conexión
     include ("../conexion.php");
