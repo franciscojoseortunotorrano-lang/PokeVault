@@ -21,7 +21,7 @@
                 <form action="NewCart.php" method="POST" enctype="multipart/form-data">
                     <!--Campo para insertar el nombre de usuario-->
                     <label for="">Imagen</label>
-                    <input type="file" name="carta" required >
+                    <input type="file" name="carta" required accept=".jpg, .png, .webp" >
 
                     <br>
                     <!--Campo para insertar la constraseña-->
