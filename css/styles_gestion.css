@@ -548,8 +548,8 @@ footer {
 
 .state{
     position: absolute;
-    top: 5px;           /* Distancia desde el borde superior de la carta */
-    left: 5px;          /* Distancia desde el borde izquierdo de la carta */
+    top: 3px;           /* Distancia desde el borde superior de la carta */
+    left: 3px;          /* Distancia desde el borde izquierdo de la carta */
     z-index: 10;
     -webkit-text-stroke: 0.5px black; /* Grosor y color del borde */
     text-decoration: none;

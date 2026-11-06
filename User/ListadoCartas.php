@@ -39,7 +39,7 @@
                                     <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
                                 </div>
                             <div class="carta-acciones">
-                            <a href="#" class="btn-modificar">Modificar</a>
+                            <a href="FormModificarcartas.php?id='.$row['id'].'" class="btn-modificar">Modificar</a>
                             <a href="#" class="btn-eliminar">Eliminar</a>
                             </div>
                         </div>';
