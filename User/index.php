@@ -27,21 +27,28 @@
             </div>
             <button>←</button>
             <!-- Ejemplo de Carta -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/1.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/2.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/3.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
+            <?php
+                include("../conexion.php");
+                //Lógica del fichero
+                $consulta="Select * from cartas";
+
+                $result=mysqli_query($conn,$consulta);
+                $conta=0;
+                while ($row=mysqli_fetch_array($result)){
+                    $ruta=$row['imagen'];
+                    $estado=$row['estado'];
+                    echo '<div class="carta">
+                            <p class="state">'.$estado.'</p>
+                            <div class="carta-frame">
+                                <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
+                            </div>
+                        </div>';
+                    $conta++;
+                    if($conta>=3){
+                        break;
+                    }
+                }
+            ?>
             <button>→</button>
         </div>
     </section>

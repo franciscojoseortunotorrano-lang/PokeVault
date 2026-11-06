@@ -1,3 +1,6 @@
+<?php 
+    include('sesion.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,7 +29,7 @@
             <?php
                 include("../conexion.php");
                 //Lógica del fichero
-                $consulta="Select * from cartas";
+                $consulta="Select * from cartas WHERE dueño='".$_SESSION['idU']."'";
 
                 $result=mysqli_query($conn,$consulta);
 
@@ -40,7 +43,7 @@
                                 </div>
                             <div class="carta-acciones">
                             <a href="FormModificarcartas.php?id='.$row['id'].'" class="btn-modificar">Modificar</a>
-                            <a href="#" class="btn-eliminar">Eliminar</a>
+                            <a href="BorrarCarta.php?id='.$row['id'].'" class="btn-eliminar">Eliminar</a>
                             </div>
                         </div>';
                     
