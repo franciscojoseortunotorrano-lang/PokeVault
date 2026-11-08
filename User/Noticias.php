@@ -1,3 +1,8 @@
+<?php 
+    include('sesion.php') ;
+    include("../conexion.php");
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,13 +25,12 @@
     <section>
         <div class="contenedor-Noticias">
             <!-- Navbar del contenedor de noticias (Filtrar) -->
-            <div>
+            <!--<div>
                 <a href="#">Filtrar</a>
-            </div>
+            </div>-->
 
             <!-- Ejemplo de Noticia 1 -->
             <?php
-                include("../conexion.php");
                 //Lógica del fichero
                 $consulta="Select * from noticias";
 
@@ -36,11 +40,15 @@
                     $titulo=$row['titulo'];
                     $cuerpo=$row['cuerpo'];
                     $id=$row["id"];
+                    $fecha=$row['publicado'];
                     echo    
                             "<div class='noticia'>
                                 <div class='noticias-frame'>
                                     <h3>$titulo</h3>
                                     <p class='cuerpo-Noticia'>$cuerpo</p>
+                                </div>
+                                <div class='noticia-pie'>
+                                    <span class='fecha'>$fecha</span>
                                 </div>
                             </div>";
                     

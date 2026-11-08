@@ -22,7 +22,7 @@
         <div class="contenedor-Noticias">
             <!-- Navbar del contenedor de noticias (Filtrar) -->
             <div>
-                <a href="#">Filtrar</a>
+                <!--<a href="#">Filtrar</a>-->
                 <a href="./FormularioNoticias.php">Añadir Noticia</a>
             </div>
             <?php
@@ -36,14 +36,18 @@
                     $titulo=$row['titulo'];
                     $cuerpo=$row['cuerpo'];
                     $id=$row["id"];
+                    $fecha=$row['publicado'];
                     echo    
                             "<div class='noticia'>
                                 <div class='noticias-frame'>
                                     <h3>$titulo</h3>
                                     <p class='cuerpo-Noticia'>$cuerpo</p>
                                 </div>
-                                <br>
-                                <a class='enlaceNoticia' href='FormModificarNoticias.php?id=$id'>Editar Noticia</a>
+                                <div class='noticia-pie'>
+                                    <a class='enlaceNoticia' href='FormModificarNoticias.php?id=$id'>Editar Noticia</a>
+                                    <a class='enlaceNoticia' href='BorrarNoticia.php?id=$id'>Borrar Noticia</a>
+                                    <span class='fecha'>$fecha</span>
+                                </div>
                             </div>";
                     
                 }
