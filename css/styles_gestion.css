@@ -563,3 +563,33 @@ footer {
     border: 3px solid #3b4c9d;
     text-align: right;
 }
+
+.fav{
+    position: absolute;
+    top: -7px;           /* Distancia desde el borde superior de la carta */
+    right: -7px;          /* Distancia desde el borde izquierdo de la carta */
+    z-index: 10;
+    -webkit-text-stroke: 0.5px black; /* Grosor y color del borde */
+    text-decoration: none;
+    color: #ffcb05;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    text-align: center;
+}
+
+.nofav{
+    position: absolute;
+    top: -11px;           /* Distancia desde el borde superior de la carta */
+    right: -9px;          /* Distancia desde el borde izquierdo de la carta */
+    z-index: 10;
+    -webkit-text-stroke: 0.1px black; /* Grosor y color del borde */
+    text-decoration: none;
+    color: black;
+    font-size: 2.3rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    text-align: center;
+}

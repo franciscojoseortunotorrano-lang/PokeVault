@@ -283,31 +283,19 @@ section {
 }
 
 /* Enlaces de acciones dentro de la navbar del contenedor de cartas */
-.contenedorCartas > div:first-child a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1rem;
+.contenedorCartas > div:first-child p {
+    font-size: 1.1rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 16px;
-    background: linear-gradient(180deg, #2a3a5c 0%, #152238 100%);
-    border: 2px solid #3b4c9d;
-    border-radius: 8px;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.contenedorCartas > div:first-child a:hover {
     color: #ffcb05;
-    border-color: #ffcb05;
-    background: linear-gradient(180deg, #3b4c9d 0%, #1e2b47 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(255, 203, 5, 0.4);
+    letter-spacing: 1px;
+    border-left: 2px solid #3b4c9d;
+    padding-left: 14px;
+    text-decoration: none;
 }
 
 /* Botones reales ('←' y '→') */
-.contenedorCartas > button {
+.contenedorCartas > a {
+    text-decoration: none;
     background: transparent;
     border: none;
     color: #ffcb05;
@@ -321,7 +309,7 @@ section {
     user-select: none;
 }
 
-.contenedorCartas > button:hover {
+.contenedorCartas > a:hover {
     color: #ffffff;
     transform: scale(1.2);
 }

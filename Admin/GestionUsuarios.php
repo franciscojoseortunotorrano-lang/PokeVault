@@ -1,4 +1,8 @@
-<?php include('sesion.php') ?>
+<?php 
+include('sesion.php') ;
+include('../conexion.php') ;
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,24 +24,41 @@
     <!-- Cuerpo de la página: Sección Gestion de usuarios -->
     <section>
         <div class="contenedorBuscador">
-            <form action="" class="buscador">
+            <form action="buscar.php" class="buscador" method="post">
                 <input type="text" name="busqueda" id="busqueda" placeholder="Usuario o id de usuario">
                 <input type="submit" value="🔍 Buscar">
             </form>
         </div>
         <div class="panelUsuarios">
-            <div class="usuario">
-                <span class="foto-perfil"><img src="../imagenes/foto.png" alt=""></span>
-                <a href="#">Usuario 1</a>
-            </div>
-            <div class="usuario">
-                <span class="foto-perfil"><img src="../imagenes/foto.png" alt=""></span>
-                <a href="#">Usuario 2</a>
-            </div>
-            <div class="usuario">
-                <span class="foto-perfil"><img src="../imagenes/foto.png" alt=""></span>
-                <a href="#">Usuario 3</a>
-            </div>
+            <?php
+                if(isset($_SESSION['otherUser'])){
+                    $otherUser=$_SESSION['otherUser'];
+                }else{
+                    $otherUser=-1;
+                }
+                if($otherUser==-1){
+                    $consulta= "SELECT * FROM usuarios WHERE rol=1";
+
+                    $result=mysqli_query($conn, $consulta);
+                    while($row=mysqli_fetch_array($result)){
+                        echo '<div class="usuario">
+                            <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
+                            <a href="#">'.$row["nombre"].'</a>
+                        </div>';
+                    }
+                }else{
+                    $consulta= "SELECT * FROM usuarios WHERE id='".$otherUser."'";
+    
+                    $result=mysqli_query($conn, $consulta);
+                    while($row=mysqli_fetch_array($result)){
+                        echo '<div class="usuario">
+                            <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
+                            <a href="#">'.$row["nombre"].'</a>
+                        </div>';
+                    }
+                }
+            
+            ?>
         </div>
     </section>
 
