@@ -24,7 +24,8 @@ echo mysqli_error($conn);
 //vemos si esos datos estaban ya registrados
 if (mysqli_num_rows($result)==0){
     if($pass===$passConfirm){
-        $consulta="INSERT INTO `usuarios`(`id`, `nombre`, `correo`, `rol`, `bloqueado`, `password`) VALUES (NULL,'$user','$email','1','0','$pass')";
+        $numero = random_int(1, 10);
+        $consulta="INSERT INTO `usuarios`(`id`, `nombre`, `correo`, `rol`, `bloqueado`, `password`,`fotoPerfil`) VALUES (NULL,'$user','$email','1','0','$pass','$numero')";
         $result=mysqli_query($conn, $consulta);
         echo mysqli_error($conn);
         header("LOCATION:./index.php");
