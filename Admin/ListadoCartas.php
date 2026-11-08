@@ -36,16 +36,25 @@
                 while ($row=mysqli_fetch_array($result)){
                     $ruta=$row['imagen'];
                     $estado=$row['estado'];
-                    echo '<div class="carta">
-                            <p class="state">'.$estado.'</p>
+                    $id =$row['id'];
+                    $carta= '<div class="carta">
+                                <p class="state">'.$estado.'</p>
                                 <div class="carta-frame">
                                     <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
+                                </div>';
+
+                    if($row['favorita']==0){
+                        $carta = $carta.'<a href="altFav.php?id='.$id.'&aux=1" class="nofav">☆</a>';
+                    }else{
+                        $carta = $carta.'<a href="altFav.php?id='.$id.'&aux=0" class="fav">★</a>';
+                    }
+                        
+                    $carta = $carta.'<div class="carta-acciones">
+                                    <a href="FormModificarcartas.php?id='.$row['id'].'" class="btn-modificar">Modificar</a>
+                                    <a href="BorrarCarta.php?id='.$row['id'].'" class="btn-eliminar">Eliminar</a>
                                 </div>
-                            <div class="carta-acciones">
-                            <a href="FormModificarcartas.php?id='.$row['id'].'" class="btn-modificar">Modificar</a>
-                            <a href="BorrarCarta.php?id='.$row['id'].'" class="btn-eliminar">Eliminar</a>
-                            </div>
-                        </div>';
+                            </div>';
+                    echo $carta; 
                     
                 }
             ?>
