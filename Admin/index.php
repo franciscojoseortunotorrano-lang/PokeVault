@@ -1,4 +1,6 @@
-<?php include('sesion.php') ?>
+<?php 
+include('sesion.php') 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -22,28 +24,70 @@
         <div class="contenedorCartas">
             <!--navbar del contenedor-->
             <div>
-                <a href="#">Filtrar</a>
-                <a href="#">modificar</a>
-                <a href="#">borrar</a>
+                <p>Cartas</p>
             </div>
-            <button>←</button>
+            <a href="PasarCarta.php?aux=0" ></a>
             <!-- Ejemplo de Carta -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/1.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/2.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/3.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-            </div>
-            <button>→</button>
+            <?php
+                include("../conexion.php");
+                //Lógica del fichero
+                $consulta="Select * from cartas WHERE dueño=".$_SESSION['idU'];
+
+                $result=mysqli_query($conn,$consulta);
+                if(mysqli_num_rows($result)<3){
+                    $conta=0;
+                    while ($row=mysqli_fetch_array($result)){
+                    $ruta=$row['imagen'];
+                    $estado=$row['estado'];
+                    echo '<div class="carta">
+                            <p class="state">'.$estado.'</p>
+                            <div class="carta-frame">
+                                <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
+                            </div>
+                        </div>';
+                    $conta++;
+                    if($conta>=3){
+                        break;
+                    }
+                }
+                }else{
+                    $i=0;
+                    while ($row=mysqli_fetch_array($result)){
+                        $id[$i]=$row['id'];
+                        $ruta[$i]=$row['imagen'];
+                        $estado[$i]=$row['estado'];
+                        $i++;
+                    }
+                    
+                    if(empty($_SESSION['posicion'])){
+                        $_SESSION['posicion']=0;
+                        $posicion=0;
+                    }else{
+                        $posicion=$_SESSION['posicion'];
+                    }
+                    for ($j=0; $j < 3; $j++) { 
+                        $indice=($posicion+$j);
+
+                        $calc = ($_SESSION['posicion'] + $j) % $i;
+
+                        if ($calc < 0) {
+                            $indice = $calc + $i; 
+                        } else {
+                            $indice = $calc; 
+                        }
+    
+                       echo '<div class="carta">
+                                <p class="state">'.$estado[$indice].'</p>
+                                <div class="carta-frame">
+                                    <img src="'.$ruta[$indice].'" alt="Carta Pokémon" class="carta-img">
+                                </div>
+                            </div>';
+                    }
+                }
+
+                
+            ?>
+            <a href="PasarCarta.php?aux=0" class="flecha">→</a>
         </div>
     </section>
     <!--Footer con el logo e informacion legal-->
