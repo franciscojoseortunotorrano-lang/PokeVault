@@ -4,8 +4,7 @@
     $titulo=$_POST['titulo'];
     $cuerpo=$_POST['cuerpo'];
 
-    //$titulo = mysqli_real_escape_string($conn, $titulo);
-    //$cuerpo = mysqli_real_escape_string($conn, $cuerpo);
+    $fechaActual = date('Y-m-d');
 
     $user = $_SESSION['nombreU'];
 
@@ -13,7 +12,7 @@
     $result=mysqli_query($conn,$consulta);
     $iduser=mysqli_fetch_array($result);
 
-    $consulta="INSERT INTO `noticias`(`id`, `autor`, `cuerpo`, `publicado`, `titulo`) VALUES (NULL,'$iduser[0]','$cuerpo',0,'$titulo')";
+    $consulta="INSERT INTO `noticias`(`id`, `autor`, `cuerpo`, `publicado`, `titulo`) VALUES (NULL,'$iduser[0]','$cuerpo','$fechaActual','$titulo')";
     //ejecutamos la sentencia SQL
     mysqli_query($conn,$consulta);
     
