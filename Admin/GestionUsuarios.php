@@ -43,9 +43,15 @@ include('../conexion.php') ;
                     while($row=mysqli_fetch_array($result)){
                         echo '<div class="usuario">
                             <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
-                            <a href="#">'.$row["nombre"].'</a>
-                            <a class="bloquear">Bloquear</a>
-                        </div>';
+                            <a href="ListadoCartasAgeno.php?id='.$row["id"].'">'.$row["nombre"].'</a>';
+                        if($row['bloqueado']==0){
+                            //bloquear usuario
+                            echo '<a class="bloquear" href="bloquearUser.php?id='.$row["id"].'&aux=1">Bloquear</a>';
+                        }else{
+                            //desbloquear usuario
+                            echo '<a class="desbloquear" href="bloquearUser.php?id='.$row["id"].'&aux=0">Desloquear</a>';
+                        }
+                        echo '</div>';
                     }
                 }else{
                     $consulta= "SELECT * FROM usuarios WHERE id='".$otherUser."'";
@@ -54,9 +60,15 @@ include('../conexion.php') ;
                     while($row=mysqli_fetch_array($result)){
                         echo '<div class="usuario">
                             <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
-                            <a href="#">'.$row["nombre"].'</a>
-                            <a class="bloquear">Bloquear</a>
-                        </div>';
+                            <a href="ListadoCartasAgeno.php?id='.$row["id"].'">'.$row["nombre"].'</a>';
+                        if($row['bloqueado']==0){
+                            //bloquear usuario
+                            echo '<a class="bloquear" href="bloquearUser.php?id='.$row["id"].'&aux=1">Bloquear</a>';
+                        }else{
+                            //desbloquear usuario
+                            echo '<a class="desbloquear" href="bloquearUser.php?id='.$row["id"].'&aux=0">Dealoquear</a>';
+                        }
+                        echo '</div>';
                     }
                 }
             

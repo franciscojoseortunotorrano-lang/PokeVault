@@ -22,37 +22,42 @@
     <section>
         <div class="contenedorCartas">
             <!-- Carta 1 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/1.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
+            <?php
+                include("../conexion.php");
+                $id=$_GET['id'];
+                //Lógica del fichero
+                $consulta="Select * from cartas WHERE dueño='".$id."'";
 
-            <!-- Carta 2 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/2.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
+                $result=mysqli_query($conn,$consulta);
 
-            <!-- Carta 3 -->
-            <div class="carta">
-                <div class="carta-frame">
-                    <img src="../imagenes/3.png" alt="Carta Pokémon" class="carta-img">
-                </div>
-                <div class="carta-acciones">
-                    <a href="#" class="btn-modificar">Modificar</a>
-                    <a href="#" class="btn-eliminar">Eliminar</a>
-                </div>
-            </div>
+                if(mysqli_num_rows($result)!=0){
+                    while ($row=mysqli_fetch_array($result)){
+                        $ruta=$row['imagen'];
+                        $estado=$row['estado'];
+                        $id =$row['id'];
+                        $carta= '<div class="carta">
+                                    <p class="state">'.$estado.'</p>
+                                    <div class="carta-frame">
+                                        <img src="'.$ruta.'" alt="Carta Pokémon" class="carta-img">
+                                    </div>';
+
+                        if($row['favorita']==0){
+                            $carta = $carta.'<a href="altFav.php?id='.$id.'&aux=1" class="nofav">☆</a>';
+                        }else{
+                            $carta = $carta.'<a href="altFav.php?id='.$id.'&aux=0" class="fav">★</a>';
+                        }
+                            
+                        $carta = $carta.'<div class="carta-acciones">
+                                        <a href="BorrarCartaAgena.php?id='.$row['id'].'" class="btn-eliminar">Eliminar</a>
+                                    </div>
+                                </div>';
+                        echo $carta; 
+                        
+                    }
+                }else{
+                    echo "<p class='mensaje'>Este usuario no pose ninguna carta</p>";
+                }
+            ?>
         </div>
     </section>
 
