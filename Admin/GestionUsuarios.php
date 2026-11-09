@@ -44,6 +44,7 @@ include('../conexion.php') ;
                         echo '<div class="usuario">
                             <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
                             <a href="#">'.$row["nombre"].'</a>
+                            <a class="bloquear">Bloquear</a>
                         </div>';
                     }
                 }else{
@@ -54,6 +55,7 @@ include('../conexion.php') ;
                         echo '<div class="usuario">
                             <span class="foto-perfil"><img src="../imagenes/perfil'.$row["fotoPerfil"].'.png" alt=""></span>
                             <a href="#">'.$row["nombre"].'</a>
+                            <a class="bloquear">Bloquear</a>
                         </div>';
                     }
                 }
